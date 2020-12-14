@@ -1,0 +1,11 @@
+extends ../extends/layout_main.pug
+
+block content
+    .card.card-primary.card-outline
+        .card-header
+            a.btn.btn-primary(href="/turmas/create", role="button")= __('Create Turma')
+            .card-tools
+                button.btn.btn-tool(type='button', data-card-widget='maximize')
+                    i.fas.fa-expand
+        .card-body.table-responsive.p-0(style="overflow-y: scroll;")
+            include ../components/turma/table.pug

@@ -1,0 +1,16 @@
+.modal.fade#add_student_modal(tabindex=-1, role='dialog')
+    .modal-dialog(role="document")
+        .modal-content
+            .modal-header
+                h5.modal-title= __('Add Student to Turma')
+                button.close(data-dismiss='modal', aria-label="Close")
+                    span(aria-hidden="true") &times;
+            .modal-body
+                p stuff goes here
+            .modal-footer
+                button#save_students.btn.btn-primary(type="button")= __('Add Students')
+                button.btn.btn-secondary(type="button", data-dismiss="modal")= __('Cancel') 
+
+
+
+

@@ -1,0 +1,9 @@
+table.table
+        thead
+            tr 
+                th(scope='col')= __('Name')
+                th(scope='col')= __('Nº of Students')
+                th(scope='col')= __('Actions')
+        tbody
+            each turma in turmas
+                include table_row

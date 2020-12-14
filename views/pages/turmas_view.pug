@@ -1,0 +1,24 @@
+extends ../extends/layout_main.pug
+
+block content
+    .card.card-primary.card-outline
+        .card-header
+            if edit
+                button.btn.btn-primary.mr-2(type="submit" form='save_turma')= __('Save Info')
+            else
+                a.btn.btn-primary.mr-2(href=urlBase+"/turmas/view/"+turma._id+"?edit")= __('Edit Info')
+            a.btn.btn-primary.mr-2(href=urlBase+"/turmas/view/"+turma._id+"/lessons")= __('Lessons')
+            a.btn.btn-primary(href="/turmas/delete/"+turma._id)= __('Delete')
+            .card-tools
+                button.btn.btn-tool(type='button', data-card-widget='maximize')
+                    i.fas.fa-expand
+        .card-body(style="overflow-y: scroll;")
+            include ../components/turma/form_view.pug
+    include ../components/turma/modal_add_student.pug
+    include ../components/turma/modal_add_schedule.pug
+
+block js-scripts
+    script(type="text/javascript").
+        const turma_id = "#{turma._id}";
+    script(src=urlBase+"/js/modal_add_student.js")
+    script(src=urlBase+"/js/modal_add_schedule.js")

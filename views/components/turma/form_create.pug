@@ -1,0 +1,8 @@
+form#add_turma(method="post" action=urlBase+"/turmas/create")
+    .form-group
+        label(for="name_input")= __('Name')
+        input#name_input.form-control(name="name_input", type="text", placeholder=__('Name'), value=name)
+    .form-group
+        label(for="payment_input")= __('Monthly Payment')
+        input#name_input.form-control(name="payment_input", type="number", placeholder=__('Monthly Payment'), value=monthly_payment)
+    

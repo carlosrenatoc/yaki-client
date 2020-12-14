@@ -1,0 +1,42 @@
+.modal.fade#add_schedule_modal(tabindex=-1, role='dialog')
+    .modal-dialog(role="document")
+        .modal-content
+            .modal-header
+                h5.modal-title= __('Add schedule to Turma')
+                button.close(data-dismiss='modal', aria-label="Close")
+                    span(aria-hidden="true") &times;
+            .modal-body
+                .row
+                    .col
+                        .form-group
+                            label(for="weekday_input")= __('Weekday')
+                            select#weekday_input.form-control
+                                option= __('monday')
+                                option= __('tuesday')
+                                option= __('wednesday')
+                                option= __('thrusday')
+                                option= __('friday')
+                                option= __('saturday')
+                                option= __('sunday')
+                .row
+                    .col.form-group
+                        label(for="begin_hour_input")= __('Begin Hour')
+                        input#begin_hour_input.form-control(name="begin_hour_input", type="number", min=0, max=23, onchange="if(parseInt(this.value,10)<10)this.value='0'+this.value;")
+                    .col.form-group
+                        label(for="begin_minute_input")= __('Begin Minute')
+                        input#begin_minute_input.form-control(name="begin_minute_input", type="number", min=0, max=59, onchange="if(parseInt(this.value,10)<10)this.value='0'+this.value;")
+                .row
+                    .col.form-group
+                        label(for="end_hour_input")= __('End Hour')
+                        input#end_hour_input.form-control(name="end_hour_input", type="number", min=0, max=23, onchange="if(parseInt(this.value,10)<10)this.value='0'+this.value;")
+                    .col.form-group
+                        label(for="end_minute_input")= __('End Minute')
+                        input#end_minute_input.form-control(name="end_minute_input", type="number", min=0, max=59, onchange="if(parseInt(this.value,10)<10)this.value='0'+this.value;")
+
+            .modal-footer
+                button#save_schedule.btn.btn-primary(type="button")= __('Add Schedule')
+                button.btn.btn-secondary(type="button", data-dismiss="modal")= __('Cancel') 
+
+
+
+

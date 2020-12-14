@@ -1,0 +1,12 @@
+extends ../extends/layout_main.pug
+
+block content
+    .card.card-primary.card-outline
+        .card-header
+            button.btn.btn-primary.mr-2(type="submit" form='save_student')= __('Save')
+            a.btn.btn-primary(href="/students/delete/"+student._id)= __('Delete')
+            .card-tools
+                button.btn.btn-tool(type='button', data-card-widget='maximize')
+                    i.fas.fa-expand
+        .card-body(style="overflow-y: scroll;")
+            include ../components/student/form_view.pug

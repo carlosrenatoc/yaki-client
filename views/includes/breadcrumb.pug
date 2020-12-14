@@ -1,0 +1,13 @@
+.content-header
+    .container-fluid
+        .row.mb-2
+            .col-sm-6
+                h1.m-0.text-dark= __(currentPage)
+            .col-sm-6
+                ol.breadcrumb.float-sm-right
+                    each crumb in breadcrumb
+                        if crumb.url !== undefined
+                            li.breadcrumb-item
+                                a(href=urlBase+crumb.url)= __(crumb.name)
+                        else
+                            li.breadcrumb-item.active= __(crumb.name)

@@ -1,0 +1,12 @@
+tr
+    td=turma.name
+    td=turma.student_count
+    td
+        .btn-group
+            a.btn.btn-primary(href="/turmas/view/"+turma._id)= __('View')
+            button#dropdownSubMenuActions.btn.btn-primary.dropdown-toggle.dropdown-icon(type='button', data-toggle='dropdown')
+                span.sr-only Toggle Dropdown
+            .dropdown-menu(role='menu', aria-labelledby="dropdownSubMenuActions")
+                a.dropdown-item(href=urlBase+"/turmas/view/"+turma._id+"/lessons")= __('Lessons')
+                a.dropdown-item(href=urlBase+"/turmas/view/"+turma._id+"/payments")= __('Payments')
+                a.dropdown-item(href=urlBase+"/turmas/delete/"+turma._id)= __('Delete')

@@ -1,0 +1,11 @@
+extends ../extends/layout_main.pug
+
+block content
+    .card.card-primary.card-outline
+        .card-header
+            a.btn.btn-primary(href="/students/create", role="button")= __('Create Student')
+            .card-tools
+                button.btn.btn-tool(type='button', data-card-widget='maximize')
+                    i.fas.fa-expand
+        .card-body.table-responsive.p-0(style="overflow-y: scroll;")
+            include ../components/student/table.pug

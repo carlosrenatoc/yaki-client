@@ -1,0 +1,11 @@
+extends ../extends/layout_main.pug
+
+block content
+    .card.card-primary.card-outline
+        .card-header
+            button.btn.btn-primary(type="submit" form='add_turma')= __('Save')
+            .card-tools
+                button.btn.btn-tool(type='button', data-card-widget='maximize')
+                    i.fas.fa-expand
+        .card-body(style="overflow-y: scroll;")
+            include ../components/turma/form_create.pug

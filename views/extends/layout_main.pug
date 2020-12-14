@@ -1,0 +1,16 @@
+extends layout.pug
+
+block body
+    body.hold-transition.sidebar-mini.sidebar-collapse
+        .wrapper
+            include ../includes/nav_main.pug
+            include ../includes/side_nav.pug
+            .content-wrapper
+                include ../includes/breadcrumb.pug
+                .content
+                    .container-fluid
+                        block content
+
+            include ../includes/control_nav.pug
+
+            include ../includes/footer.pug

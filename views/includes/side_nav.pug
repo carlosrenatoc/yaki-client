@@ -1,0 +1,74 @@
+aside.main-sidebar.sidebar-dark-primary.elevation-4
+	a.brand-link(href=urlBase)
+		img.brand-image.img-circle.elevation-3(src=urlBase+'/dist/img/AdminLTELogo.png', alt='AdminLTE Logo', style='opacity: .8')
+		span.brand-text.font-weight-light 
+			b Yaki
+			|tori
+	// Sidebar
+	.sidebar
+		// Sidebar user panel (optional)
+		.user-panel.mt-3.pb-3.mb-3.d-flex
+			.image
+				img.img-circle.elevation-2(src=urlBase+'/dist/img/user2-160x160.jpg', alt='User Image')
+			.info
+				a.d-block(href=urlBase+'/profile') #{user.fl_name}
+		// Sidebar Menu
+		nav.mt-2
+			ul.nav.nav-pills.nav-sidebar.flex-column(data-widget='treeview', role='menu', data-accordion='false')
+				
+				li.nav-item
+					-var activated = breadcrumb[breadcrumb.length -1].name == 'Dashboard';
+					a.nav-link(href=urlBase, class=activated ? "active" : "")
+						i.nav-icon.fas.fa-th
+						p= __('Dashboard')
+				-var activated = breadcrumb[breadcrumb.length -1].name == 'Students' || (breadcrumb.length > 1 && breadcrumb[breadcrumb.length -2].name == 'Students');
+				li.nav-item.has-treeview(class=activated ? "menu-open" : "")
+					a.nav-link(href='#', class=activated ? "active" : "")
+						i.nav-icon.fas.fa-tachometer-alt
+						p= __('Students')
+							i.right.fas.fa-angle-left
+					ul.nav.nav-treeview
+						li.nav-item
+							-var activated = breadcrumb[breadcrumb.length -1].name == 'Students';
+							a.nav-link(href=urlBase+'/students', class=activated ? "active" : "")
+								i.far.fa-circle.nav-icon
+								p= __('List')
+						li.nav-item
+							- var activated = breadcrumb[breadcrumb.length -1].name == 'Create' && (breadcrumb.length > 1 && breadcrumb[breadcrumb.length -2].name == 'Students');
+							a.nav-link(href=urlBase+'/students/create', class=activated ? "active" : "")
+								i.far.fa-circle.nav-icon
+								p= __('Create')
+
+				- var activated = breadcrumb[breadcrumb.length -1].name == 'Turmas' || (breadcrumb.length > 1 && breadcrumb[breadcrumb.length -2].name == 'Turmas');
+				li.nav-item.has-treeview(class=activated ? "menu-open" : "")
+					a.nav-link(href='#', class=activated ? "active" : "")
+						i.nav-icon.fas.fa-tachometer-alt
+						p= __('Turmas')
+							i.right.fas.fa-angle-left
+					ul.nav.nav-treeview
+						li.nav-item
+							- var activated = breadcrumb[breadcrumb.length -1].name == 'Turmas';
+							a.nav-link(href=urlBase+'/turmas', class= activated ? "active": "")
+								i.far.fa-circle.nav-icon
+								p= __('List')
+						li.nav-item
+							- var activated = breadcrumb[breadcrumb.length -1].name == 'Create' && (breadcrumb.length > 1 && breadcrumb[breadcrumb.length -2].name == 'Turmas');
+							a.nav-link(href=urlBase+'/turmas/create', class=activated ? "active" : "")
+								i.far.fa-circle.nav-icon
+								p= __('Create')
+				li.nav-item.has-treeview
+					a.nav-link(href='#')
+						i.nav-icon.fas.fa-tachometer-alt
+						p= 'Aulas'
+							i.right.fas.fa-angle-left
+					ul.nav.nav-treeview
+						li.nav-item
+							a.nav-link(href=urlBase+'/lessons')
+								i.far.fa-circle.nav-icon
+								p= __('List')
+						li.nav-item
+							a.nav-link(href=urlBase+'/lessons/calendar')
+								i.far.fa-circle.nav-icon
+								p= 'Calendário'
+		// /.sidebar-menu
+		// /.sidebar

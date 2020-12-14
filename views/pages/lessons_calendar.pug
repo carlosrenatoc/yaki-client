@@ -1,0 +1,16 @@
+extends ../extends/layout_main.pug
+
+block content
+    .card.card-primary.card-outline
+        .card-header
+            .card-tools
+                button.btn.btn-tool(type='button', data-card-widget='maximize')
+                    i.fas.fa-expand
+        .card-body.table-responsive.p-0(style="overflow-y: scroll;")
+            #calendar
+block js-scripts
+    script(type="text/javascript").
+        const lessons = #{lessons};
+        console.log(lessons)
+    script(src=urlBase+"/js/calendar.js")
+    

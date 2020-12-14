@@ -1,0 +1,28 @@
+form#save_lesson(method="post" action=urlBase+"/lessons/save/"+lesson._id)
+    .form-group
+        label(for="day_input")= __('Day')
+        input#day_input.form-control(name="day_input", type="text", placeholder="Day", value=lesson.short_day, disabled)
+    .form-group
+        label(for="turma_input")= __('Turma')
+        input#turma_input.form-control(name="turma_input", type="text", placeholder="Turma", value=lesson.turma.name, disabled)
+
+    .col-12
+        .card.card-primary.card-outline
+            .card-header
+                h4.card-title= __('Attendances')
+                .card-tools
+                    button.btn.btn-tool(type='button', data-card-widget='collapse')
+                        i.fas.fa-minus
+            .card-body
+                ul.list-group
+                    each student in lesson.turma.students
+                        li.list-group-item.list-group-item-primary.d-flex.justify-content-between.align-items-center(id='student-'+student._id, name="student_item")
+                            | #{student.fl_name}
+                            - if (lesson.attendances.includes(student._id))
+                                button.btn.btn-success(type='button')= __('Attendant')
+                                input(type='checkbox' name='student_list[]', value=student._id, checked, hidden)
+                            - else
+                                button.btn.btn-danger(type='button')= __('Absent')
+                                input(type='checkbox', name='student_list[]',value=student._id, hidden)
+
+                            

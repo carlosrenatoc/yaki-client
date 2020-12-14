@@ -1,0 +1,11 @@
+table.table.table-hover.text-nowrap
+    thead
+        tr
+            th(scope='col')= __('Name')
+            th(scope='col')= __('Age')
+            th(scope='col')= __('Email')
+            th(scope='col')= __('Belt')
+            th(scope='col')= __('Actions')
+    tbody
+        each student in students
+            include table_row

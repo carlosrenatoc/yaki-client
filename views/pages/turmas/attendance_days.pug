@@ -1,0 +1,19 @@
+extends ../../extends/layout_main.pug
+
+block content
+    .card.card-primary.card-outline
+        .card-header
+            h4.card-title= __(month) + '-' + year
+            .card-tools
+                button#change_date.btn.btn-tool
+                    i.fas.fa-calendar
+                button.btn.btn-tool(type='button', data-card-widget='maximize')
+                    i.fas.fa-expand
+        .card-body(style="overflow-y: scroll;")
+            include ../../components/turma/list_attendance_days.pug
+        .card-footer
+    include ../../components/lesson/change_date_modal.pug
+
+block js-scripts
+    script(src=urlBase+"/js/change_date.js")
+    script(src=urlBase+"/js/add_lesson.js")

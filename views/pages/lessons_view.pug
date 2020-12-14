@@ -1,0 +1,18 @@
+extends ../extends/layout_main.pug
+
+block content
+    .card.card-primary.card-outline
+        .card-header
+            button.btn.btn-primary.mr-2(type="submit" form='save_lesson')= __('Save Lesson')
+            a.btn.btn-primary(href="/lessons/delete/"+lesson._id)= __('Remove Lesson')
+            .card-tools
+                button.btn.btn-tool(type='button', data-card-widget='maximize')
+                    i.fas.fa-expand
+        .card-body(style="overflow-y: scroll;")
+            include ../components/lesson/form_view.pug
+
+block js-scripts
+    script(type="text/javascript").
+        const Attendant = "!{__('Attendant')}";
+        const Absent = "!{__('Absent')}";
+    script(src=urlBase+"/js/attendance.js")

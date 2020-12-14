@@ -1,0 +1,30 @@
+each schedule in attendance_days
+    .card.card-primary.card-outline.mb-2.js-schedule-card(data-scheduleid=schedule.schedule._id, data-turmaid=turma._id )
+        .card-header
+            h4.card-title= __(schedule.schedule.weekday) +" "+ schedule.schedule.begin_time + "-" + schedule.schedule.end_time
+            .card-tools
+                button.btn.btn-tool(type='button', data-card-widget='collapse')
+                    i.fas.fa-minus
+        .card-body
+            ul#list_attendance.list-group
+                each day in schedule.days
+                    li(name='day_item', data-lessonid=day.lesson?day.lesson.id:'').list-group-item.d-flex.justify-content-between.align-items-center 
+                        div
+                            span(name='day')= day.day
+                            if day.lesson
+                                span.badge.badge-primary.badge-pill.ml-1= day.lesson.presence_count+'/'+turma.student_count+ " "+__("students")
+                            else if day.future
+                                span.badge.badge-primary.badge-pill.ml-1= __('not there')
+                            else
+                                span.badge.badge-primary.badge-pill.ml-1= __('not taught')
+                        if !day.future
+                            if day.lesson
+                                .btn-group
+                                    a.btn.btn-primary(href=urlBase+"/lessons/view/"+day.lesson._id)= __('Attendances')
+                                    button#dropdownSubMenuActions.btn.btn-primary.dropdown-toggle.dropdown-icon(type='button', data-toggle='dropdown')
+                                        span.sr-only Toggle Dropdown
+                                    .dropdown-menu(role='menu', aria-labelledby="dropdownSubMenuActions")
+                                        button.js_remove_lesson.dropdown-item= __('Remove Lesson')
+                            else
+                                button.js_add_lesson.btn.btn-primary= __('Add Lesson')
+                            

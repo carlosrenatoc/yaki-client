@@ -1,0 +1,19 @@
+form#add_student(method="post" action=urlBase+"/students/create")
+    .form-group
+        label(for="name_input")= __('Full name')
+        input#name_input.form-control(name="name_input", type="text", placeholder=__('Full name'), value=name)
+    .form-group
+        label(for="email_input")= __('Email')
+        input#email_input.form-control(name="email_input", type="email", placeholder=__('Email'), value=email)
+    .form-group
+        label(for="belt_input")= __('Current belt')
+        input#belt_input.form-control(name="belt_input", placeholder=__('Current belt'), value=current_belt)
+    .form-group
+        label(for="birthday_input")= __('Birthday')
+        input#birthday_input.form-control(name="birthday_input", type="date", placeholder=__('Birthday'), value=birthday)
+    .form-group
+        label(for="phone_input")= __('Phone')
+        input#phone_input.form-control(name="phone_input", type="phone", placeholder=__('Phone'), value=phone)
+    .form-group
+        label(for="guardian_input")= __('Guardian')
+        input#guardian_input.form-control(name="guardian_input", type="text", placeholder=__('Guardian'), value=guardian)

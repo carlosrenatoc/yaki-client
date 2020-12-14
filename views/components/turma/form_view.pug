@@ -1,0 +1,49 @@
+form#save_turma(method="post" action=urlBase+"/turmas/save/"+turma._id)
+    if edit
+        .form-group
+            label(for="name_input")= __('Name')
+            input#name_input.form-control(name="name_input", type="text", placeholder=__('Name'), value=turma.name)
+        .form-group
+            label(for="payment_input")= __('Monthly Payment')
+            input#name_input.form-control(name="payment_input", type="number", placeholder=__('Monthly Payment'), value=turma.monthly_payment)
+    else
+        .form-group
+            label(for="name_input")= __('Name')
+            input#name_input.form-control(name="name_input", type="text", placeholder=__('Name'), value=turma.name, disabled)
+        .form-group
+            label(for="payment_input")= __('Monthly Payment')
+            input#name_input.form-control(name="payment_input", type="number", placeholder=__('Monthly Payment'), value=turma.monthly_payment, disabled)
+    .row
+        .col-12
+            .card.card-primary.card-outline
+                .card-header
+                    h4.card-title= __('Students')
+                    .card-tools
+                        button.btn.btn-tool(type='button', data-card-widget='collapse')
+                            i.fas.fa-minus
+                .card-body
+                    ul.list-group
+                        each student in turma.students
+                            li.list-group-item.list-group-item-primary.d-flex.justify-content-between.align-items-center
+                                | #{student.fl_name}
+                                a.btn.btn-danger(href="/turmas/"+student.turma+"/remove/student/"+student._id, data-toggle="tooltip", title=__('Remove Student'))
+                                    i.fas.fa-trash
+                    button#open_add_student_modal.btn.btn-primary.mt-2(type="button")= __('Add Student')
+    
+    .row.mt-2
+        .col-12
+            .card.card-primary.card-outline
+                .card-header
+                    h4.card-title= __('Schedule')
+                    .card-tools
+                        button.btn.btn-tool(type='button', data-card-widget='collapse')
+                            i.fas.fa-minus
+                .card-body
+                    ul.list-group
+                        each schedule in turma.schedule
+                            li.list-group-item.list-group-item-primary.d-flex.justify-content-between.align-items-center= __(schedule.weekday) + ' ' + schedule.time
+                                a.btn.btn-danger(href="/turmas/"+turma.id+"/remove/schedule/"+schedule._id, data-toggle="tooltip", title=__('Remove Schedule'))
+                                    i.fas.fa-trash
+                    button#open_add_schedule_modal.btn.btn-primary.mt-2(type="button")= __('Add Schedule')
+                    
+    

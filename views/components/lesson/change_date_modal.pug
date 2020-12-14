@@ -1,0 +1,27 @@
+.modal.fade#change_date_modal(tabindex=-1, role='dialog', style='z-index:9999')
+    .modal-dialog(role="document")
+        .modal-content
+            .modal-header
+                h5.modal-title= __('Change Date')
+                button.close(data-dismiss='modal', aria-label="Close")
+                    span(aria-hidden="true") &times;
+            .modal-body
+                .row
+                    .col.form-group
+                        label(for="month_input")= __('Month')
+                        select#month_input.form-control
+                            each _month in ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+                                option(selected=(_month==month), value=_month)= __(_month)
+                    .col.form-group
+                        label(for="year_input")= __('Year')
+                        select#year_input.form-control
+                            - var n = new Date().getFullYear() -10;
+                            while n <= new Date().getFullYear()
+                                option(selected=(n == year))= n++ 
+            .modal-footer
+                button#save_date.btn.btn-primary(type="button")= __('Save Date')
+                button.btn.btn-secondary(type="button", data-dismiss="modal")= __('Cancel') 
+
+
+
+
